@@ -1,0 +1,203 @@
+/* Universal Box-Sizing for consistent layout */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Custom Properties (CSS Variables) */
+:root {
+  --primary-color: #7b68ee;
+  --secondary-color: #8c9eff;
+  --background-gradient-start: #1a2b3d;
+  --background-gradient-end: #000000;
+  --card-background: transparent;
+  --text-color: #f0f2f5;
+  --border-color: rgba(255, 255, 255, 0.15);
+  --gradient-text-start: #7b68ee;
+  --gradient-text-end: #a0b9ff;
+
+  --shadow-light: rgba(255, 255, 255, 0.05);
+  --shadow-medium: rgba(0, 0, 0, 0.3);
+  --shadow-strong: rgba(0, 0, 0, 0.5);
+
+  --border-radius-element: 10px;
+  --border-radius-popup: 40px;
+}
+
+/* Body Styles */
+body {
+  font-family: "Inter", "Segoe UI", "Roboto", sans-serif;
+  background: linear-gradient(
+    to bottom right,
+    var(--background-gradient-start),
+    var(--background-gradient-end)
+  );
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 25px;
+  margin: 0;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.make-card-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 360px;
+  background-color: var(--card-background);
+  border-radius: var(--border-radius-popup);
+  box-shadow: 0 15px 30px var(--shadow-strong);
+  padding: 25px;
+  max-height: 580px;
+}
+
+/* Heading Styles */
+h1 {
+  background: linear-gradient(
+    to right,
+    var(--gradient-text-start),
+    var(--gradient-text-end)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  margin-bottom: 30px;
+  font-size: 2.2em;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: -0.04em;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Form Group Container */
+.form-group {
+  background-color: var(--card-background);
+  padding: 25px;
+  border-radius: var(--border-radius-element);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 5px 15px var(--shadow-medium);
+  width: 100%;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.form-group label {
+  display: block;
+  font-size: 1.1em;
+  color: var(--text-color);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.form-group input[type="text"] {
+  width: calc(100% - 20px);
+  padding: 12px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-element);
+  background-color: transparent;
+  font-size: 1em;
+  color: var(--text-color);
+  margin-bottom: 15px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease;
+  outline: none;
+}
+
+.form-group input[type="text"]::placeholder {
+  color: rgba(240, 242, 245, 0.6);
+}
+
+.form-group input[type="text"]:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(123, 104, 238, 0.2);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.form-group p {
+  font-size: 0.9em;
+  color: var(--text-color);
+  margin-top: 5px;
+}
+
+.form-group a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.form-group a:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+/* Button Styling */
+button#save-button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: var(--border-radius-element);
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px var(--shadow-medium);
+  transition: background-color 0.3s ease, transform 0.2s ease,
+    box-shadow 0.3s ease;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+button#save-button:hover {
+  background-color: #6c5ce7;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px var(--shadow-strong);
+}
+
+button#save-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px var(--shadow-light);
+}
+
+/* Success Message */
+p#success-message {
+  font-size: 1em;
+  color: #5cb85c;
+  font-weight: 600;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+p#success-message.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scrollbar styling */
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--background-gradient-start);
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #5a6b7c;
+  border-radius: 10px;
+  border: 2px solid var(--background-gradient-start);
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #708192;
+}
