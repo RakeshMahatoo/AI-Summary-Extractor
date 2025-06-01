@@ -1,0 +1,178 @@
+:root {
+  /* New Color Palette for Dark Theme */
+  --primary-color: #7B68EE; /* A vibrant, rich violet-blue for primary actions */
+  --secondary-color: #8C9EFF; /* A lighter, complementary blue for secondary */
+  --background-gradient-start: #1A2B3D; /* Dark blue-grey (for the entire background) */
+  --background-gradient-end: #000000; /* Pure black (for the entire background) */
+  --card-background: transparent; /* Changed to transparent */
+  --text-color: #F0F2F5; /* Light grey for all text on dark background */
+  --border-color: rgba(255, 255, 255, 0.15); /* Lighter, subtle border for elements on dark */
+  --gradient-text-start: #7B68EE; /* Start color for H2 gradient */
+  --gradient-text-end: #A0B9FF;   /* End color for H2 gradient */
+
+  /* Shadows (adjusted for dark background - slightly lighter) */
+  --shadow-light: rgba(255, 255, 255, 0.05);
+  --shadow-medium: rgba(0, 0, 0, 0.3); /* For buttons on the dark background */
+  --shadow-strong: rgba(0, 0, 0, 0.5); /* For the pop-up itself */
+
+  --border-radius-element: 10px;
+  --border-radius-popup: 40px;
+}
+
+/* General Body Styles - Blending with Background & White Text */
+body {
+  font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+  background: linear-gradient(to bottom right, var(--background-gradient-start), var(--background-gradient-end)); /* Blue and black gradient */
+  color: var(--text-color); /* **All general text color is now light** */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 25px;
+  width: 360px;
+  min-height: 380px;
+  max-height: 580px;
+  margin: 0;
+  box-sizing: border-box;
+  overflow-y: auto;
+  border-radius: var(--border-radius-popup);
+  box-shadow: 0 15px 30px var(--shadow-strong); /* More pronounced shadow for pop-up */
+}
+
+/* Heading Styling - Gradient Text */
+h2 {
+  background: linear-gradient(to right, var(--gradient-text-start), var(--gradient-text-end)); /* Gradient for text */
+  -webkit-background-clip: text; /* Clip the gradient to the text shape */
+  background-clip: text;
+  -webkit-text-fill-color: transparent; /* Make text transparent to show gradient */
+  color: transparent; /* Fallback for browsers not supporting -webkit-text-fill-color */
+
+  margin-bottom: 30px;
+  font-size: 2.2em;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: -0.04em;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Options Container */
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+/* Select Box Styling */
+#summary-type {
+  padding: 12px 18px;
+  border: 1px solid var(--border-color); /* Border now lighter */
+  border-radius: var(--border-radius-element);
+  background-color: transparent; /* **Background now transparent** */
+  font-size: 1em;
+  color: var(--text-color); /* **Text color inside select is now light** */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23F0F2F5%22%20d%3D%22M287%2C197.4L154.7%2C65.1c-2.4-2.4-5.8-4-9.9-4s-7.5%2C1.6-9.9%2C4L5.4%2C197.4c-3.2%2C3.2-5.1%2C7-5.4%2C11.3s1.2%2C8.3%2C4%2C11c2.8%2C2.8%2C6.7%2C4.5%2C10.6%2C4.7h255.6c4.1-0.2%2C7.8-1.9%2C10.6-4.7c2.8-2.8%2C4-6.6%2C4-11C292.4%2C204.4%2C290.1%2C200.6%2C287%2C197.4z%22%2F%3E%3C%2Fsvg%3E'); /* **Lighter arrow on transparent background** */
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px var(--shadow-light);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+#summary-type:hover {
+  border-color: var(--primary-color);
+  background-color: rgba(255, 255, 255, 0.05); /* Subtle background on hover */
+}
+
+#summary-type:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(123, 104, 238, 0.2);
+  outline: none;
+}
+
+/* Button Styling */
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: var(--border-radius-element);
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px var(--shadow-medium);
+  color: rgb(255, 255, 255);
+  /* Background color remains specific per button */
+}
+
+button#summarize {
+  background-color: var(--primary-color);
+}
+
+button#summarize:hover {
+  background-color: #6C5CE7; /* Slightly darker/more saturated primary on hover */
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px var(--shadow-strong);
+}
+
+button#copy-btn {
+  background-color: var(--secondary-color);
+}
+
+button#copy-btn:hover {
+  background-color: #7B8CFF; /* Slightly darker/more saturated secondary on hover */
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px var(--shadow-strong);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px var(--shadow-light);
+}
+
+/* Result Area */
+#result {
+  background-color: transparent; /* **Background now transparent** */
+  border: 1px solid var(--border-color); /* Border now lighter */
+  border-radius: var(--border-radius-element);
+  padding: 22px;
+  width: 100%;
+  min-height: 140px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', monospace;
+  font-size: 0.95em;
+  line-height: 1.6;
+  color: var(--text-color); /* **Text color inside result is now light** */
+  overflow-y: auto;
+  box-shadow: 0 5px 15px var(--shadow-medium);
+  transition: all 0.3s ease;
+}
+
+/* Optional: Scrollbar styling for a cleaner look */
+body::-webkit-scrollbar,
+#result::-webkit-scrollbar {
+  width: 8px;
+}
+
+body::-webkit-scrollbar-track,
+#result::-webkit-scrollbar-track {
+  background: var(--background-gradient-start); /* Match scrollbar track to dark background */
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb,
+#result::-webkit-scrollbar-thumb {
+  background-color: #5A6B7C; /* Lighter thumb color for dark background */
+  border-radius: 10px;
+  border: 2px solid var(--background-gradient-start);
+}
+
+body::-webkit-scrollbar-thumb:hover,
+#result::-webkit-scrollbar-thumb:hover {
+  background-color: #708192;
+}
